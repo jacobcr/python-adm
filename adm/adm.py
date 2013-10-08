@@ -64,7 +64,7 @@ class ADM(object):
                 result['canonical'][registration_id] = canonical
         elif response.status_code == 400:
             reason = json.loads(response.content).get('reason')
-            if reason is not None and reason == 'InvalidRegistrationId':
+            if reason is not None:
                 result['errors'][registration_id] = reason
             else:
                 raise ADMException("Bad Request: {0}", response.content)
